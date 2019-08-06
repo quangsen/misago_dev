@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import UserManager as BaseUserManager, PermissionsMixin, AbstractBaseUser
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, BaseUserManager):
     ACTIVATION_NONE = 0
 
     username = models.CharField(max_length=30)

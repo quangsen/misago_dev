@@ -38,9 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'misago',
+    'misago.analytics',
+    'misago.cache',
+    'misago.categories',
+    'misago.conf',
+    'misago.core',
+    'misago.search',
+    'misago.markup',
+    'misago.threads',
+    'misago.users',
     'runtest',
     'rest_framework',
-    'misago.users'
 ]
 
 MIDDLEWARE = [
@@ -82,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'misago_dev',
         'USER': 'root',
-        'PASSWORD': '0000',
+        'PASSWORD': 'Secret@123',
     }
 }
 
