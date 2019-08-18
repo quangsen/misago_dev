@@ -49,6 +49,11 @@ INSTALLED_APPS = [
     'misago.users',
     'runtest',
     'rest_framework',
+    'misago.acl',
+    'misago.icons',
+    'misago.readtracker',
+    'misago.graphql',
+    'misago.faker'
 ]
 
 MIDDLEWARE = [
