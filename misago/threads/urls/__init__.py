@@ -5,7 +5,6 @@ from misago.threads.views.list import ForumThreadsList, CategoryThreadsList, Pri
 
 LISTS_TYPES = ("all", "my", "new", "unread", "subscribed", "unapproved")
 
-
 def threads_list_patterns(prefix, view, patterns):
     urls = []
     for i, pattern in enumerate(patterns):
@@ -45,7 +44,6 @@ else:
         ),
     )
     
-print('vvvdd', urlpatterns)
 # else:
 #     urlpatterns = threads_list_patterns(
 #         "threads",

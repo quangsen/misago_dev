@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 
 class ThreadsList(View):
+    print('gi the')
     def get(self, request):
         print('get')
         return HttpResponse('get')

@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'misago_dev',
         'USER': 'root',
-        'PASSWORD': 'Secret@123',
+        'PASSWORD': '0000',
     }
 }
 
