@@ -1,0 +1,20 @@
+<div id="categories-mount">
+  	{% if categories %}
+      	<div class="categories-list">
+	        {% for category in categories %}
+	          	{% include "misago/categories/category.html" with category=category %}
+	        {% endfor %}
+      	</div>
+    </div>
+  	{% else %}
+	    <div class="categories-list">
+		    <ul class="list-group">
+		        <li class="list-group-item empty-message">
+			        <p class="lead">
+			            no categories
+			        </p>
+		        </li>
+		    </ul>
+	    </div>
+    {% endif %}
+</div>

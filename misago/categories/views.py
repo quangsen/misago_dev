@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+def categories(request):
+	print('vvv', request.user_acl)
+	return render(request, 'misago/categories/list.html', {})
