@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "misago_users.User"
+
 
 # Application definition
 
@@ -66,7 +68,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     # add middleware
-    "misago.acl.middleware.user_acl_middleware",
+    # "misago.acl.middleware.user_acl_middleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -98,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'misago_dev',
         'USER': 'root',
-        'PASSWORD': 'secret@123',
+        'PASSWORD': 'Secret@123',
     }
 }
 
@@ -141,4 +143,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# AUTH_USER_MODEL = "misago_users.User"
+
+

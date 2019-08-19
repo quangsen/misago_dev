@@ -4,7 +4,6 @@ from .import defaults
 
 class StaticSettings:
     def __getattr__(self, name):
-        print('cuoc tinh')
         try:
             return getattr(settings, name)
         except AttributeError:

@@ -1,14 +1,27 @@
 from django.db import models
-from django.contrib.auth.models import UserManager as BaseUserManager, PermissionsMixin, AbstractBaseUser
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.utils.translation import gettext_lazy as _
 
 
-class User(AbstractBaseUser, BaseUserManager):
+class UserManager(BaseUserManager):
+    def create_user(self, email=None, password=None, **extra_fields):
+        pass
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        user = self.model(email=self.normalize_email(email))
+        user.set_password(password)
+        user.save()
+        return user
+
+
+
+class User(AbstractBaseUser):
     ACTIVATION_NONE = 0
 
     username = models.CharField(max_length=30)
-    slug = models.CharField(max_length=30, unique=True)
-    email = models.EmailField(max_length=255, db_index=True)
-    email_hash = models.CharField(max_length=32, unique=True)
+    slug = models.SlugField(max_length=30, db_index=True)
+    email = models.EmailField(max_length=255, db_index=True, unique=True)
+    email_hash = models.CharField(max_length=32)
     title = models.CharField(max_length=255, null=True, blank=True)
     requires_activation = models.PositiveIntegerField(default=ACTIVATION_NONE)
     acl_key = models.CharField(max_length=12, null=True, blank=True)
@@ -32,25 +45,12 @@ class User(AbstractBaseUser, BaseUserManager):
     posts = models.PositiveIntegerField(default=0, db_index=True)
     last_posted_on = models.DateTimeField(null=True, blank=True)
 
+    is_staff = models.BooleanField(
+        _("staff status"),
+        default=False,
+        help_text=_("Designates whether the user can log into admin sites."),
+    )
 
-# class UserManager(BaseUserManager):
-#     def _create_user(self, username, email, password, **extra_fields):
-#         if not username:
-#             raise ValueError("User must have an username.")
-#         if not email:
-#             raise ValueError("User must have an email address.")
+    USERNAME_FIELD = 'email'
 
-#         # if not extra_fields.get("rank"):
-#         #     extra_fields["rank"] = Rank.objects.get_default()
-
-#     def create_user(self, username, email=None, password=None, **extra_fields):
-#         extra_fields.setdefault('is_staff', False)
-#         extra_fields.setdefault("is_superuser", True)
-#         return self._create_user(username, email, password, **extra_fields)
-
-#     def create_superuser(self, username, email, password=None, **extra_fields):
-#         extra_fields.setdefault("is_staff", True)
-#         extra_fields.setdefault("is_superuser", True)
-
-
-
+    objects = UserManager()

@@ -1,6 +1,5 @@
 from django.conf.urls import url, include
 from rest_framework import routers, serializers, viewsets
-from django.contrib.auth.models import User
 from django.shortcuts import HttpResponse
 from ..api import auth, mention
 from ..api.users import UserViewSet
