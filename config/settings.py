@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = "misago_users.User"
+# AUTH_USER_MODEL = "misago_users.User"
 
 
 # Application definition
@@ -68,7 +68,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     # add middleware
-    # "misago.acl.middleware.user_acl_middleware",
+    "misago.cache.middleware.cache_versions_middleware",
+    "misago.conf.middleware.dynamic_settings_middleware",
+    # "misago.users.middleware.UserMiddleware",
+    "misago.acl.middleware.user_acl_middleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -142,6 +145,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+CACHES = {
+    "default": {
+        # Misago doesn't run well with LocMemCache in production environments
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache"
+    }
+}
 
 
 
