@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# AUTH_USER_MODEL = "misago_users.User"
+AUTH_USER_MODEL = "misago_users.User"
 
 
 # Application definition
@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'misago.icons',
     'misago.readtracker',
     'misago.graphql',
-    'misago.faker'
+    'misago.faker',
+    'mptt'
 ]
 
 MIDDLEWARE = [
