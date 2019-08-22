@@ -1,5 +1,7 @@
 from django.apps import AppConfig
 
 
-class CacheConfig(AppConfig):
-    name = 'cache'
+class MisagoCacheConfig(AppConfig):
+    name = "misago.cache"
+    label = "misago_cache"
+    verbose_name = "Misago Cache"

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import AnonymousUser as DjangoAnonymousUser
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
@@ -54,3 +56,17 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'email'
 
     objects = UserManager()
+
+
+class UsernameChange(models.Model):
+    changed_by_username = models.CharField(max_length=30)
+    changed_on = models.DateTimeField(default=timezone.now)
+    new_username = models.CharField(max_length=255)
+    old_username = models.CharField(max_length=255)
+
+
+class AnonymousUser(DjangoAnonymousUser):
+    acl_key = "anonymous"
+
+    def update_acl_key(self):
+        raise TypeError("Can't update ACL key on anonymous users")

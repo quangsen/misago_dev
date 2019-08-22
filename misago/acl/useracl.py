@@ -7,7 +7,7 @@ def get_user_acl(user, cache_versions):
 	pass
 	# user_acl = get_acl_cache(user, cache_versions)
 	# if user_acl is None:
-	# 	pass
+	# 	user_acl = 'quang'
 
 	# if user_acl is None:
 	# 	user_acl = buildacl.build_acl(user.get_roles())

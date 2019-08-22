@@ -15,6 +15,9 @@ def get_categories_tree(request, parent=None, join_posters=False):
     #     print('quang')
     #     # ken = queryset_with_acl
     # print('kakak', queryset_with_acl)
+
+    categories_dict = {}
+    categories_list = []
         
     flat_list = []
 

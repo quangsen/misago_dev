@@ -71,7 +71,7 @@ MIDDLEWARE = [
     # add middleware
     "misago.cache.middleware.cache_versions_middleware",
     "misago.conf.middleware.dynamic_settings_middleware",
-    # "misago.users.middleware.UserMiddleware",
+    "misago.users.middleware.UserMiddleware",
     "misago.acl.middleware.user_acl_middleware",
 ]
 
@@ -104,7 +104,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'misago_dev',
         'USER': 'root',
-        'PASSWORD': 'Secret@123',
+        'PASSWORD': 'secret@123',
     }
 }
 
@@ -155,5 +155,11 @@ CACHES = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'quangnv3@rikkeisoft.com'
+EMAIL_HOST_PASSWORD = 'Sinhvienbk9x'
+EMAIL_PORT = 587
 
